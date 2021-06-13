@@ -1,118 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
     <!-- import CSS -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
     <!-- import JavaScript -->
    
     <title>豆果网站分析</title>
 </head>
 <body>
     hello world
+
     <div id="app">
-        <el-button @click="visible = true">Button</el-button>
+        <!-- <el-button @click="visible = true">Button</el-button>
         <el-dialog :visible.sync="visible" title="Hello world">
         <p>Try Element</p>
         </el-dialog>
-
-
         <p>123</p>
-    <el-row :gutter="10">
+         <el-row :gutter="10">
         <el-col :xs="{span:24,offset:0}" :sm="{span:12,offset:6}" :md="{span:12,offset:6}">
-        <div id="main"></div>
+       
         </el-col>
         <el-col :xs="{span:24,offset:0}" :sm="{span:12,offset:6}" :md="{span:12,offset:6}">
        1312312 </el-col>
-    </el-row>
+    </el-row> -->
     </div>
-   
+ 
+    <div id="main" style="height: 800px; width: 600px;"></div>
 </body>
 </html>
 
 <script>
 
-    new Vue({
-        el:"#app",
-        data: function() {
-        return { visible: false }
-      }
+    // new Vue({
+    //     el:"#app",
+    //     data: function() {
+    //     return { visible: false }
+    //   }
 
-    })
-
-
+    // })
 
     var main=echarts.init(document.getElementById("main"))
     var  option = {
-        backgroundColor: '#2c343c',
+        
+    backgroundColor: '#2c343c',
 
-        title: {
-            text: 'Customized Pie',
-            left: 'center',
-            top: 20,
-            textStyle: {
-                color: '#ccc'
-            }
-        },
+    title: {
+        text: 'Customized Pie',
+        left: 'center',
+        top: 20,
+        textStyle: {
+            color: '#ccc'
+        }
+    },
 
-        tooltip: {
-            trigger: 'item'
-        },
+    tooltip: {
+        trigger: 'item'
+    },
 
-        visualMap: {
-            show: false,
-            min: 80,
-            max: 600,
-            inRange: {
-                colorLightness: [0, 1]
-            }
-        },
-        series: [
-            {
-                name: '访问来源',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '50%'],
-                data: [
-                    {value: 335, name: '直接访问'},
-                    {value: 310, name: '邮件营销'},
-                    {value: 274, name: '联盟广告'},
-                    {value: 235, name: '视频广告'},
-                    {value: 400, name: '搜索引擎'}
-                ].sort(function (a, b) { return a.value - b.value; }),
-                roseType: 'radius',
-                label: {
+    visualMap: {
+        show: false,
+        min: 80,
+        max: 600,
+        inRange: {
+            colorLightness: [0, 1]
+        }
+    },
+    series: [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius: '55%',
+            center: ['50%', '50%'],
+            data: [
+                {value: 257, name: '可乐鸡翅'},
+                {value: 256, name: '西红柿炒鸡蛋'},
+                {value: 254, name: '糖醋排骨'},
+                {value: 252, name: '红烧茄子'},
+                {value: 250, name: '酸辣土豆丝'}
+            ].sort(function (a, b) { return a.value - b.value; }),
+            roseType: 'radius',
+            label: {
+                color: 'rgba(255, 255, 255, 0.3)'
+            },
+            labelLine: {
+                lineStyle: {
                     color: 'rgba(255, 255, 255, 0.3)'
                 },
-                labelLine: {
-                    lineStyle: {
-                        color: 'rgba(255, 255, 255, 0.3)'
-                    },
-                    smooth: 0.2,
-                    length: 10,
-                    length2: 20
-                },
-                itemStyle: {
-                    color: '#c23531',
-                    shadowBlur: 200,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                },
+                smooth: 0.2,
+                length: 10,
+                length2: 20
+            },
+            itemStyle: {
+                color: '#c23531',
+                shadowBlur: 200,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+            },
 
-                animationType: 'scale',
-                animationEasing: 'elasticOut',
-                animationDelay: function (idx) {
-                    return Math.random() * 200;
-                }
+            animationType: 'scale',
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) {
+                return Math.random() * 200;
             }
-        ]
-    };
+        }
+    ]
+};
     //option =>
     main.setOption(option)
 </script>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.min.js"></script>
