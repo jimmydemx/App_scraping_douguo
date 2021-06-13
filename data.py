@@ -33,7 +33,8 @@ Host: api.douguo.net
 """
 
 
-data='client=4&_vs=0'
+data_catalog='client=4&_vs=0'
+data_recipe='client=4&_vs=400&order=3'
 
-
-
+url_catalog="http://api.douguo.net/recipe/flatcatalogs"
+url_recipe="http://api.douguo.net/recipe/v2/search/"

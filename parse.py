@@ -5,7 +5,7 @@ def query_to_dic(i):
     value=re.findall(r"[\d\w\-\_]+=([\d\w\-\_]+)",i)
     # print(key,value)
     d=zip(key,value)
-    print(dict(d))
+    #print(dict(d))
     return dict(d)
   
   
