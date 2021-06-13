@@ -25,7 +25,6 @@ catalog = json.loads(r_catalog.text)
 # sub_sub_catalog: 时令蔬菜/绿叶蔬菜
 # item: 西南花/芦笋
 
-
 catalog_list=[]
 for sub_catalog in catalog["result"]["cs"]: 
     for sub_sub_catalog in sub_catalog["cs"]:
@@ -45,12 +44,12 @@ def recipe_scraping(p):
     i=0
     while True: 
         rs_url=str(info.url_recipe+str(i)+"/20")
-        r_recipe=requests.post(rs_url,headers=header_parse,data=data_recipe_parse)
+        r_recipe=requests.post(rs_url,headers=header_parse,data=p)
         recipe=json.loads(r_recipe.text)
         # print("recipe=",recipe)
         jump=0
 
-        # if item==[],it will automatic not enter the loop
+        # if item==[],it will automatic NOT enter the loop
         for item in recipe["result"]["list"]:
             jump=1
             mongodb_store={}
@@ -81,12 +80,10 @@ def recipe_scraping(p):
 
 if __name__ == "__main__":    
     # recipe_scraping(catalog_list[0])
-    with concurrent.futures.ProcessPoolExecutor(max_workers=2) as executor:
+    with concurrent.futures.ProcessPoolExecutor(max_workers=10) as executor:
         for p in catalog_list:
             print("正在执行导入：",p["keyword"])
             executor.submit(recipe_scraping, p)
-
-
 
 
 
